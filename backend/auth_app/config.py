@@ -16,6 +16,7 @@ class BaseConfig(CommonBaseConfig):
     APP_NAME: str = "app_auth" 
     AUTH_SALT: str = ProjectConfigClass.Get_AUTH_SALT()
     AUTH_JWT_KEY: str = ProjectConfigClass.Get_AUTH_JWT_KEY()
+    Get_HASH_ALGORITHM: str = ProjectConfigClass.Get_HASH_ALGORITHM()
     AUTH_TOKEN_EXPIRE_IN: int = int(ProjectConfigClass.Get_ACCESS_TOKEN_EXPIRE_IN_SECONDS())
 
 

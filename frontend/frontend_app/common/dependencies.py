@@ -10,18 +10,14 @@ from jose.exceptions import ExpiredSignatureError , JWTError
 
 
 def get_verified_current(
-    token: Optional[str] = Depends(OAuth2PasswordBearer(tokenUrl=config.token_APP_AUTH_URL, auto_error=False)),
     c_token: Union[str, None] = Cookie(default=None)
 ):
 
-    if token is None and c_token is None :
+    if  c_token is None :
         return {"status_code":status.HTTP_401_UNAUTHORIZED , "msg":" No Token founded" , "redirectUrl":"/signin"}
 
     try:
-        if c_token:
-            varified_and_decoded_token = jwt.decode(c_token, config.AUTH_JWT_KEY, algorithms=["HS256"])
-        if token:
-            varified_and_decoded_token = jwt.decode(token, config.AUTH_JWT_KEY, algorithms=["HS256"])
+        varified_and_decoded_token = jwt.decode(c_token, config.AUTH_JWT_KEY, algorithms=["HS256"])
         xx = ''
     except ExpiredSignatureError as ex:
         return {"status_code":status.HTTP_401_UNAUTHORIZED , "msg":" ExpiredSignatureError" , "redirectUrl":"/signin"}

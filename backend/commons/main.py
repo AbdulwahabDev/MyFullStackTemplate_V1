@@ -65,9 +65,11 @@ def set_up_main(config: CommonBaseConfig, routers_modules: list = []):
     app.add_middleware(TrustedHostMiddleware, allowed_hosts=config.allow_hosts)
     app.add_middleware(
         CORSMiddleware,
-        allow_origins=["http://localhost","http://localhost:3000","http://localhost:3006",
+        allow_origins=[
+                        "http://localhost","http://localhost:3000","http://localhost:3006",
                        "http://127.0.0.1","http://127.0.0.1:3000","http://127.0.0.1:3006",
-                       "http://0.0.0.0","http://0.0.0.0:3000","http://0.0.0.0:3006"],
+                    #    "http://0.0.0.0","http://0.0.0.0:3000","http://0.0.0.0:3006"
+                       ],
         allow_credentials=True,
         allow_methods=["*"],
         allow_headers=["*"],

@@ -21,18 +21,15 @@ db_session = Depends(get_db_session)
 
 
 def get_verified_current_user_or_none(
-    token: Optional[str] = Depends(OAuth2PasswordBearer(tokenUrl="users/login", auto_error=False)),
-    c_token: Union[str, None] = Cookie(default=None),
+    c_token: Union[str, None] = Cookie(default=None)
 ):
     
-    if token is None and c_token is None:
+    if  c_token is None:
         return None
 
-    try:
-        if token:
-            varified_and_decoded_token = jwt.decode(token, config.AUTH_JWT_KEY, algorithms=["HS256"])
-        if c_token:
-            varified_and_decoded_token = jwt.decode(c_token, config.AUTH_JWT_KEY, algorithms=["HS256"])
+    try: 
+        
+        varified_and_decoded_token = jwt.decode(c_token,key=config.AUTH_JWT_KEY,algorithms=config.Get_HASH_ALGORITHM)
 
     except ExpiredSignatureError:
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "ExpiredSignatureError")
