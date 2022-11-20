@@ -1,4 +1,18 @@
-# devOpsProject_000
+# MyFullStackTemplate_V1
+
+- ### app_backend container ** Python@10 FastAPI **
+- [ docker-compose > services > app_backend   ]
+
+- ### pgsql container ** POSTGRE@15 **
+- [ docker-compose > services > pgsql   ]
+
+- ### adminer container ** SIMPLE DB READER TOOL   **
+- [ docker-compose > services > adminer   ] 
+
+- ### app_frontend container ** NOT MODERN FRONTEND FRAMEWORK YET !! **
+- [ docker-compose > services > app_frontend   ] 
+ 
+  
 
 # STEP 1 
 - docker compose up 
