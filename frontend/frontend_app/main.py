@@ -16,7 +16,7 @@ from frontend_app.Views.Home.index import index_router
 from frontend_app.Views.authentication.sign import sign_router
 from frontend_app.Views.Profile.Proflie import Proflie_router
 from frontend_app.Views.shared.shared import shared_router
-from frontend_app.Views.reports.visits.visits import visits_router
+
 
 
 
@@ -26,7 +26,6 @@ app = set_up_main(
         Proflie_router,
         index_router,
         sign_router,
-        visits_router
         
         
     ],
