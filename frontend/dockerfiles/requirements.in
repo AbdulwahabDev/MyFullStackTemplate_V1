@@ -1,0 +1,12 @@
+uvicorn[standard]
+pydantic
+fastapi
+
+requests
+orjson 
+email-validator
+ 
+python-jose
+# pandas
+
+jinja2

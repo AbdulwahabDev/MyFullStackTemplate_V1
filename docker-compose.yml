@@ -1,0 +1,84 @@
+version: "3.9"
+
+
+x-common-envs:
+  &common-envs
+  
+  POSTGRES_DB: 'devopsproject001'  # CHOSE YOU DB NAME :) .             ***  lower case  **
+  POSTGRES_USER: 'postgres'       # DONT CHANGE  HERE  THIS IS DEFAULT #  RUN pgsql service BY BASH AND CHANGE DEFAULT INFO
+  POSTGRES_PASSWORD: 'postgres'   # DONT CHANGE  HERE  THIS IS DEFAULT #  RUN pgsql service BY BASH AND CHANGE DEFAULT INFO
+
+  HASH_ALGORITHM : 'HS256'
+  ACCESS_TOKEN_EXPIRE_IN_SECONDS : '1800'  
+  AUTH_SALT : 'aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5'
+  AUTH_JWT_KEY : 'C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN'
+
+  AUTH_APP_URL : 'http://127.0.0.1:3003/users/login'
+  
+services: 
+
+  app_frontend:
+    build: frontend/
+    restart: unless-stopped
+    environment:
+      << : *common-envs
+    ports:
+        - '127.0.0.1:3006:3006'
+    command: ./start-reload.sh 
+    networks:
+          - myAppNetwork
+
+  app_backend:   
+      build:
+        context: backend/
+        dockerfile: Dockerfile
+        args:
+          RELEASE_SHA: 'unknown'
+      ports:
+          - '3003:3003'
+      environment:
+          <<: *common-envs
+          DB_HOST : 'pgsql' 
+          DB_PORT: '5432'
+          APP_NAME: 'auth_app'
+          RELEASE_SHA : 'unknown'           
+      networks:
+          - myAppNetwork
+      depends_on:
+          - pgsql
+      command: ./start-reload.sh
+   
+  pgsql:
+        image: 'postgres:15'
+        
+        ports: 
+          - '5432:5432'
+        
+        environment:
+            <<: *common-envs 
+            
+        volumes:
+            - 'my_db_vol:/var/lib/postgresql/data'
+        networks:
+            - myAppNetwork
+        healthcheck:
+              test: ["CMD", "pg_isready", "-q", "-d", "devopsproject001", "-U", "postgres"]
+              retries: 3
+              timeout: 5s
+  
+  adminer:
+    image: adminer
+    restart: always
+    networks :
+     - myAppNetwork
+    ports:
+      - 8080:8080
+    depends_on:
+     - pgsql
+
+networks:
+    myAppNetwork:
+        driver: bridge
+volumes:
+    my_db_vol:
+        driver: local

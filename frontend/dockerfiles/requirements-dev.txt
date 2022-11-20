@@ -1,0 +1,7 @@
+-r ./requirements.txt
+
+
+# [ TEST ] 
+pytest
+asphalt
+mypy

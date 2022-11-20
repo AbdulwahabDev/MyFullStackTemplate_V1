@@ -1,0 +1,110 @@
+{% extends "/Shared/Master.html" %}
+
+
+
+{% block PageVendor_Stylesheets %}
+
+{% endblock PageVendor_Stylesheets %}
+
+<!-- Toolbar:begin  -->
+{% block ToolbarTitle %} 
+ <!-- Toolbar 1 -->
+{% endblock ToolbarTitle %} 
+ 
+{% block ToolbarBreadcrumb %}  
+    <!-- begin::Item-->
+    <li class="breadcrumb-item text-muted">
+        <a href="/" class="text-muted text-hover-primary"> الرئيسية</a>
+    </li>
+    <!--end::Item -->
+
+    <!--begin::Item--> 
+    <!-- <li class="breadcrumb-item">   <span class="bullet bg-gray-300 w-5px h-2px"></span> </li> -->
+    <!--end::Item-->
+
+    <!--begin::Item-->
+    <!-- <li class="breadcrumb-item text-muted">Toolbars</li> -->
+    <!--end::Item-->
+
+    <!--begin::Item--> 
+    <!-- <li class="breadcrumb-item">   <span class="bullet bg-gray-300 w-5px h-2px"></span> </li> -->
+    <!--end::Item-->
+
+    <!--begin::Item-->
+    <!-- <li class="breadcrumb-item text-dark">Toolbar 1</li> -->
+    <!--end::Item -->
+{% endblock ToolbarBreadcrumb %} 
+ 
+{% block ToolbarButton %} 
+ <!-- <a href="#" class=" btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create</a> -->
+{% endblock ToolbarButton %}
+<!-- Toolbar:end  -->
+
+<!-- RenderBody:start  -->
+{% block RenderBody %}  
+
+	<div class="row g-5 g-xl-8" dir="rtl">
+		<div class="col-xl-4">
+			<!--begin::Statistics Widget 1-->
+			<div class="card bgi-no-repeat card-xl-stretch mb-xl-8" style="background-position: right top; background-size: 30% auto; background-image: url(assets/media/svg/shapes/abstract-4.svg">
+				<!--begin::Body-->
+				<a href="/reports/visits" class="card-title fw-bolder text-muted text-hover-primary fs-4"> 
+					<div class="card-body text-center pt-20">
+						عرض الزيارات  
+						<p class="text-dark-75 fw-bold fs-5 mt-6"> عرض جميع الزيارات للبيانات الخام      
+						
+					</div>
+				 </a> 
+				<!--end::Body-->
+			</div>
+			<!--end::Statistics Widget 1-->
+		</div>
+
+		<div class="col-xl-4">
+ 
+		</div>
+
+		<div class="col-xl-4">
+		 
+		</div>
+		
+	</div>
+ 
+
+ 
+  
+
+	<div class="separator separator-dotted separator-content border-dark my-15  hide">
+		<span class="h1 w-550px fw-bolder">    خط  </span>
+	</div>
+ 
+
+
+
+{% endblock RenderBody %}
+<!-- RenderBody:end  -->
+
+
+
+
+
+<!--begin::Page Vendors Javascript(used by this page)-->
+{% block Javascript_PageVendors %}
+
+{% endblock Javascript_PageVendors %} 
+<!--end::Page Vendors Javascript-->
+<!--begin::Page Custom Javascript(used by this page)-->
+{% block Javascript_PageCustome %}
+			
+
+			<!-- Resources -->
+			<script src="/dist/assets/plugins/amchart/lib/5/index.js"></script>
+			<script src="/dist/assets/plugins/amchart/lib/5/percent.js"></script>
+			<script src="/dist/assets/plugins/amchart/lib/5/Animated.js"></script> 
+			
+
+			<!-- Chart code -->
+
+
+{% endblock Javascript_PageCustome %}
+<!--end::Page Custom Javascript-->
