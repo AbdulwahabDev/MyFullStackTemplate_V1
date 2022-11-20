@@ -22,6 +22,11 @@
 - [ docker-compose > services > app_frontend   ] 
  
   
+ <hr />
+ 
+ <br />
+ <br />
+ <br />
 
 # STEP 1 
 - docker compose up 
