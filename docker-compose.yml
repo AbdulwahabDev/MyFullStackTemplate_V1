@@ -13,7 +13,7 @@ x-common-envs:
   AUTH_SALT : 'aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5'
   AUTH_JWT_KEY : 'C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN'
 
-  AUTH_APP_URL : 'http://127.0.0.1:3003/users/login'
+  AUTH_APP_URL : 'http://app_backend:3003'
   
 services: 
 
@@ -23,7 +23,7 @@ services:
     environment:
       << : *common-envs
     ports:
-        - '127.0.0.1:3006:3006'
+        - ':3006:3006'
     command: ./start-reload.sh 
     networks:
           - myAppNetwork

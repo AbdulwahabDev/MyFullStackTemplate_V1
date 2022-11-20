@@ -1,5 +1,6 @@
 from http.client import HTTPException
-from fastapi import APIRouter, Depends, status
+from typing import Union
+from fastapi import APIRouter, Depends, status , Cookie
 from fastapi.responses import Response
 
 from auth_app.common.dependencies import db_session, login_required, get_verified_current_user_or_none
@@ -15,9 +16,13 @@ from .services.update_a_user_by_id import update_a_user_by_id_
 from .services.toggleActive_a_user_by_id import toggleActive_a_user_by_id_
 from .services.Change_user_Password import Change_user_Password_, reset_user_Password_
 
+from auth_app.common.dependencies import get_verified_current_user_or_none
 
 users_router = APIRouter(prefix="/users", tags=["users"])
 
+@users_router.get("/get_verified_current_user_or_none")
+def get_verified_current_user_or_none_(c_token: Union[str, None] = Cookie(default=None)):
+    return get_verified_current_user_or_none(c_token=c_token)
 
 @users_router.get("", response_model=list[UsersResponse], dependencies=[Depends(login_required)])
 def get_list_users(db_session=db_session):

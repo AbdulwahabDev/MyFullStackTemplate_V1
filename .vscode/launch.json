@@ -15,42 +15,6 @@
 //     ]
 // }
 
-{
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
-    "version": "0.2.0",
-    "configurations": [
-        {
-            "name": "Python: FastAPI",
-            "type": "python",
-            "request": "launch",
-            "module": "uvicorn",
-            "args": [
-                "backend.auth_app.main:app","--port","3003","--reload"
-            ],
-            "env": {
-                "APP_NAME":"auth_app",
-                "RELEASE_SHA":"0.0.1",
-                
-                "AUTH_SALT":"aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5",
-                "AUTH_JWT_KEY":"C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN",
-                "HASH_ALGORITHM":"HS256",
-                "ACCESS_TOKEN_EXPIRE_IN_SECONDS":"1800",
-
-                "DB_HOST":"localhost",
-                "POSTGRES_USER":"postgres",
-                "POSTGRES_PASSWORD":"postgres",
-                "POSTGRES_DB":"devopsproject001",
-                "DB_PORT":"5432",
-            },
-            "jinja": true,
-            "justMyCode": true
-        }
-    ]
-}
-
-
 // {
 //     // Use IntelliSense to learn about possible attributes.
 //     // Hover to view descriptions of existing attributes.
@@ -63,20 +27,56 @@
 //             "request": "launch",
 //             "module": "uvicorn",
 //             "args": [
-//                 "frontend.frontend_app.main:app","--port","3006","--reload"
+//                 "backend.auth_app.main:app","--port","3003","--reload"
 //             ],
 //             "env": {
-//                 "APP_NAME":"frontend_app",
-//                 "RELEASE_SHA":"0.0.1", 
+//                 "APP_NAME":"auth_app",
+//                 "RELEASE_SHA":"0.0.1",
+                
 //                 "AUTH_SALT":"aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5",
 //                 "AUTH_JWT_KEY":"C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN",
 //                 "HASH_ALGORITHM":"HS256",
 //                 "ACCESS_TOKEN_EXPIRE_IN_SECONDS":"1800",
-                
-//                 "AUTH_APP_URL" : "http://127.0.0.1:3003/users/login"
+
+//                 "DB_HOST":"localhost",
+//                 "POSTGRES_USER":"postgres",
+//                 "POSTGRES_PASSWORD":"postgres",
+//                 "POSTGRES_DB":"devopsproject001",
+//                 "DB_PORT":"5432",
 //             },
 //             "jinja": true,
 //             "justMyCode": true
 //         }
 //     ]
 // }
+
+
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: FastAPI",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "frontend.frontend_app.main:app","--port","3006","--reload"
+            ],
+            "env": {
+                "APP_NAME":"frontend_app",
+                "RELEASE_SHA":"0.0.1", 
+                // "AUTH_SALT":"aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5",
+                // "AUTH_JWT_KEY":"C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN",
+                // "HASH_ALGORITHM":"HS256",
+                // "ACCESS_TOKEN_EXPIRE_IN_SECONDS":"1800",
+                
+                "AUTH_APP_URL" : "http://127.0.0.1:3003"
+            },
+            "jinja": true,
+            "justMyCode": true
+        }
+    ]
+}

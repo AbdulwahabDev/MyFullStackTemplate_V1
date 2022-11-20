@@ -10,8 +10,7 @@ logger = logging.getLogger(__name__)
 import sys, os
 sys.path.append(os.path.abspath('../'))  
 from ProjectConfig import ProjectConfigClass
-
-POSTGRES_CONNECTION = "postgresql://{user}:{password}@{host}:{port}/{database}"
+ 
 
 
 class CommonBaseConfig(BaseSettings):
@@ -44,55 +43,13 @@ class CommonBaseConfig(BaseSettings):
     # to disable docs if = None
     openapi_url: str = "/openapi.json"
     docs_url: str = "/docs"
-  
-    # db configs
-    DB_USER: str =     ProjectConfigClass.Get_DB_USER()
-    DB_PASSWORD: str = ProjectConfigClass.Get_DB_PASSWORD()
-    DB_NAME: str =     ProjectConfigClass.Get_DB_NAME()
-    DB_HOST: str =     ProjectConfigClass.Get_DB_HOST()
-    DB_PORT: int =     int(ProjectConfigClass.Get_DB_PORT())
-
-    # read only db configs
-    READ_ONLY_DB_USER: str | None = ProjectConfigClass.Get_DB_USER()
-    READ_ONLY_DB_PASSWORD: str | None = ProjectConfigClass.Get_DB_PASSWORD()
-    READ_ONLY_DB_NAME: str | None = ProjectConfigClass.Get_DB_NAME()
-    READ_ONLY_DB_HOST: str | None = ProjectConfigClass.Get_DB_HOST()
-    READ_ONLY_DB_PORT: int | None = int(ProjectConfigClass.Get_DB_PORT())
-  
+   
     # logging level ,,
     LOGGING_LEVEL: LoggingLevel = LoggingLevel.INFO
 
     # the current head git sha ,, used to track deployments
     RELEASE_SHA: str = "unknown"
-
-    # generate SQLALCHEMY_DATABASE_URL dynamically
-    @property
-    def SQLALCHEMY_DATABASE_URL(self) -> str: 
-        return POSTGRES_CONNECTION.format(
-            user=self.DB_USER,
-            password=self.DB_PASSWORD,
-            host=self.DB_HOST,
-            port=self.DB_PORT,
-            database=self.DB_NAME,
-        )
-
-    @property
-    def SQLALCHEMY_READ_DATABASE_URL(self) -> str: 
-        if self.READ_ONLY_DB_USER is not None:
-            return POSTGRES_CONNECTION.format(
-                user=self.READ_ONLY_DB_USER,
-                password=self.READ_ONLY_DB_PASSWORD,
-                host=self.READ_ONLY_DB_HOST,
-                port=self.READ_ONLY_DB_PORT,
-                database=self.READ_ONLY_DB_NAME,
-            )
-        else:
-            return self.SQLALCHEMY_DATABASE_URL
-
-    SQL_POOL_SIZE: int = 40
-    SQL_POOL_OVERFLOW_SIZE: int = 10
-    SQL_POOL_ENABLED: bool = True
-
+  
     class Config:
         env_file = ".env"
 

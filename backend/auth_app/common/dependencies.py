@@ -24,8 +24,8 @@ def get_verified_current_user_or_none(
     c_token: Union[str, None] = Cookie(default=None)
 ):
     
-    if  c_token is None:
-        return None
+    if  c_token is None or c_token == 'None':
+        raise HTTPException(status.HTTP_401_UNAUTHORIZED, "NO Token Found !")
 
     try: 
         

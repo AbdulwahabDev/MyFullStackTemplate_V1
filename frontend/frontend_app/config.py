@@ -63,9 +63,6 @@ def current_config(BaseConfig):
 
 class BaseConfig():
     APP_NAME: str = ProjectConfigClass.Get_APP_NAME()
-    AUTH_SALT: str = ProjectConfigClass.Get_AUTH_SALT()
-    AUTH_JWT_KEY: str = ProjectConfigClass.Get_AUTH_JWT_KEY()
-    AUTH_TOKEN_EXPIRE_IN: int = ProjectConfigClass.Get_ACCESS_TOKEN_EXPIRE_IN_SECONDS() 
     token_APP_AUTH_URL: str =   ProjectConfigClass.Get_AUTH_APP_URL() 
 
 config: BaseConfig = current_config(BaseConfig)

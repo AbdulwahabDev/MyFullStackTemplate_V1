@@ -39,8 +39,10 @@ class CommonBaseConfig(BaseSettings):
             return os.environ.get("ALLOWED_CORS_ORIGINS").split(",")
 
     # to disable docs if = None
-    openapi_url: str = "/openapi.json"
-    docs_url: str = "/docs"
+    # openapi_url: str = "/openapi.json"
+    openapi_url: str = None
+    docs_url: str = None
+    # docs_url: str = "/docs"
 
     # logging level ,,
     LOGGING_LEVEL: LoggingLevel = LoggingLevel.INFO
