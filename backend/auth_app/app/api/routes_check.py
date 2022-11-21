@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status
 
-from auth_app.common.dependencies import db_session
+from app.common.dependencies import db_session
 from fastapi import APIRouter
 
 

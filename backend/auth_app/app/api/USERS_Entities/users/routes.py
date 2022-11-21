@@ -3,7 +3,7 @@ from typing import Union
 from fastapi import APIRouter, Depends, status , Cookie
 from fastapi.responses import Response
 
-from auth_app.common.dependencies import db_session, login_required, get_verified_current_user_or_none
+from app.common.dependencies import db_session, login_required, get_verified_current_user_or_none
 
 
 from .schemas import UsersResponse, UsersCreateRequest, UsersLoginRequest, UserUpdateRequest
@@ -16,7 +16,7 @@ from .services.update_a_user_by_id import update_a_user_by_id_
 from .services.toggleActive_a_user_by_id import toggleActive_a_user_by_id_
 from .services.Change_user_Password import Change_user_Password_, reset_user_Password_
 
-from auth_app.common.dependencies import get_verified_current_user_or_none
+from app.common.dependencies import get_verified_current_user_or_none
 
 users_router = APIRouter(prefix="/users", tags=["users"])
 

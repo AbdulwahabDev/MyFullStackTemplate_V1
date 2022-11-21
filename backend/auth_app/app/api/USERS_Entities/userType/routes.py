@@ -1,4 +1,4 @@
-from auth_app.common.dependencies import db_session, login_required
+from app.common.dependencies import db_session, login_required
 from fastapi import APIRouter, Depends
 from .schemas import UserTypeResponse, UserTypeCreateRequest, UserTypeUpdateRequest
 

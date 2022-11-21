@@ -6,10 +6,10 @@ from ..helpers import hash_password
 from ..models import Users
 from ..schemas import UsersCreateRequest
 
-from auth_app.api.USERS_Entities.userType.services.get_a_userType_by_id import get_a_userType_by_id_
+from app.api.USERS_Entities.userType.services.get_a_userType_by_id import get_a_userType_by_id_
 
-from auth_app.api.USERS_Entities.users_UserType.schemas import user_UsersTypeCreateRequest
-from auth_app.api.USERS_Entities.users_UserType.services.add_new_user_UsersType import add_new_user_UsersType_
+from app.api.USERS_Entities.users_UserType.schemas import user_UsersTypeCreateRequest
+from app.api.USERS_Entities.users_UserType.services.add_new_user_UsersType import add_new_user_UsersType_
 
 
 def add_new_user_(

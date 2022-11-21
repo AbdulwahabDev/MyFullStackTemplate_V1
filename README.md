@@ -1,32 +1,4 @@
-# MyFullStackTemplate_V1
-
- <hr />
- 
-- ### app_backend container ** Python@10 FastAPI **
-- [ docker-compose > services > app_backend   ]
-- POSTMAN APIs COLLECTION : [myfullstacktemplate-v1-POSTMAN-LINK](https://www.postman.com/universal-resonance-102655/workspace/myfullstacktemplate-v1)
-
- <hr />
- 
-- ### pgsql container ** POSTGRE@15 **
-- [ docker-compose > services > pgsql   ]
-
-
-- ### adminer container ** SIMPLE DB READER TOOL   **
-- [ docker-compose > services > adminer   ] 
-
-
- <hr />
- 
-- ### app_frontend container ** NOT MODERN FRONTEND FRAMEWORK YET !! **
-- [ docker-compose > services > app_frontend   ] 
- 
-  
- <hr />
- 
- <br />
- <br />
- <br />
+# devOpsProject_000
 
 # STEP 1 
 - docker compose up 

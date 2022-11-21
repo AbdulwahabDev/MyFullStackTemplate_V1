@@ -1,11 +1,11 @@
-import sys
+
 from logging.config import fileConfig
  
-
-sys.path = ["", "..."] + sys.path[1:]
-
-from alembic import context
-from config import config as fastapi_config
+import os  , sys
+sys.path.append(os.path.abspath('../'))  
+ 
+from alembic import context 
+from app.config import config as fastapi_config
 from commons.db import Base
 from sqlalchemy import engine_from_config, pool
 

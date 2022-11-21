@@ -1,0 +1,20 @@
+# docker stop $(docker ps -a -q) # stop all images 
+# docker rm $(docker ps -a -q) # remove all images 
+
+
+# docker compose up  app_tables-api app_auth-api db app_frontend
+
+
+# docker system prune -a
+
+# حقل تعرف على TWoFactorAuth
+# <input class="form__input--text input_verification_pin" name="pin" maxlength="6" type="tel" pattern="[0-9]*" autocorrect="off" role="textbox" autocomplete="off" aria-label="Please enter the code here" aria-describedby="phone-pin-error" id="input__phone_verification_pin" aria-required="true" validation="pin" validation-message="Please enter the code present on your app">
+
+
+# running port issue
+lsof -i:8080
+kill $(lsof -t -i:8080)
+
+
+bash - get a list of environment variables with proper handling of new lines
+typeset -p

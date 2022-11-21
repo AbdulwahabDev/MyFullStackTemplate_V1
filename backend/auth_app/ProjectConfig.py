@@ -4,10 +4,7 @@ from pathlib import Path
 import os
  
 class ProjectConfigClass():
- 
-    def Get_APP_NAME(): 
-        return  os.environ.get('APP_NAME')  
-
+  
     def Get_AUTH_JWT_KEY():
         return os.environ.get('AUTH_JWT_KEY')
          
@@ -17,9 +14,6 @@ class ProjectConfigClass():
     def Get_DB_USER(): 
         return  os.environ.get('POSTGRES_USER')
         
-    def Get_DB_NAME(): 
-        return  os.environ.get('POSTGRES_DB').lower() # MUST BE LOWER CASE !! THIS IS THE RULES  
-
     def Get_DB_PASSWORD():
         return  os.environ.get('POSTGRES_PASSWORD')
         
@@ -34,4 +28,7 @@ class ProjectConfigClass():
 
     def Get_ACCESS_TOKEN_EXPIRE_IN_SECONDS():
         return  os.environ.get('ACCESS_TOKEN_EXPIRE_IN_SECONDS')
-         
+    
+    def Get_AUTH_APP_URL():
+        return  os.environ.get('AUTH_APP_URL')
+ 

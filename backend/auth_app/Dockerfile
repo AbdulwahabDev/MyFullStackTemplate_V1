@@ -1,7 +1,6 @@
 
 FROM python:3.10-slim AS production
 
-ARG APP_NAME=auth_app
 
 WORKDIR /app
   
@@ -17,19 +16,24 @@ RUN  pip install --no-cache-dir -r commons/requirements.txt
 
 
 COPY commons commons
+COPY ProjectConfig.py ProjectConfig.py
+COPY init_db.py init_db.py
+COPY start-reload.sh start-reload.sh
+RUN chmod +x ./start-reload.sh 
 # commons end 
  
 COPY ProjectConfig.py ProjectConfig.py
 
-COPY init_db.py init_db.py 
+COPY app/init_db.py app/init_db.py 
+ 
+# app requirements
+COPY app/requirements.txt app/requirements.txt
+RUN  pip install --no-cache-dir -r app/requirements.txt
+# app requirements
+ 
 
-COPY start-reload.sh start-reload.sh
-RUN chmod +x start-reload.sh
+COPY app app
 
 
-COPY auth_app/requirements.txt $APP_NAME/requirements.txt
-RUN  pip install --no-cache-dir -r $APP_NAME/requirements.txt
-
-COPY auth_app $APP_NAME
 
 

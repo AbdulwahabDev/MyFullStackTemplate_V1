@@ -1,6 +1,6 @@
 from fastapi import HTTPException, status
 
-from auth_app.common.dependencies import db_session
+from app.common.dependencies import db_session
 from fastapi import APIRouter
 
 
@@ -16,7 +16,7 @@ def create_USERS_Entities_seeds(UserName: str, Paswword: str, db_session=db_sess
     if UserName.lower() != "admin" or Paswword != "admin":
         raise HTTPException(status.HTTP_401_UNAUTHORIZED, "HTTP_401_UNAUTHORIZED")
 
-    from auth_app.api.USERS_Entities.users.helpers import get_user
+    from app.api.USERS_Entities.users.helpers import get_user
 
     CheckIFProjectOwnerAddedBefore = get_user(username="admin", db_session=db_session)
 
@@ -25,8 +25,8 @@ def create_USERS_Entities_seeds(UserName: str, Paswword: str, db_session=db_sess
     try:
         if True:  # add_new_user_type_
 
-            from auth_app.api.USERS_Entities.userType.services.add_new_user_type import add_new_user_type_
-            from auth_app.api.USERS_Entities.userType.schemas import UserTypeCreateRequest
+            from app.api.USERS_Entities.userType.services.add_new_user_type import add_new_user_type_
+            from app.api.USERS_Entities.userType.schemas import UserTypeCreateRequest
 
             usersType = add_new_user_type_(
                 body=UserTypeCreateRequest(name="Project_Owner"),
@@ -34,8 +34,8 @@ def create_USERS_Entities_seeds(UserName: str, Paswword: str, db_session=db_sess
             )
             if True:  # add_new_user_
 
-                from auth_app.api.USERS_Entities.users.services.add_new_user import add_new_user_
-                from auth_app.api.USERS_Entities.users.schemas import UsersCreateRequest
+                from app.api.USERS_Entities.users.services.add_new_user import add_new_user_
+                from app.api.USERS_Entities.users.schemas import UsersCreateRequest
 
                 usersCreateRequest = UsersCreateRequest(
                     email="dev.abdulwahab@gmail.com",

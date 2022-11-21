@@ -1,10 +1,10 @@
 import bcrypt
-from auth_app.config import config
+from app.config import config
 
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 
-from auth_app.api.USERS_Entities.users.models import Users
+from app.api.USERS_Entities.users.models import Users
 
 
 def hash_password(password: str):

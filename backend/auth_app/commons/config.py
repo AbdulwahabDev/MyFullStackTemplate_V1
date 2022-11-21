@@ -48,14 +48,14 @@ class CommonBaseConfig(BaseSettings):
     # db configs
     DB_USER: str =     ProjectConfigClass.Get_DB_USER()
     DB_PASSWORD: str = ProjectConfigClass.Get_DB_PASSWORD()
-    DB_NAME: str =     ProjectConfigClass.Get_DB_NAME()
+    DB_NAME: str =     None # IT WILL CHANGE BASED ON YOU BACKEND APP
     DB_HOST: str =     ProjectConfigClass.Get_DB_HOST()
     DB_PORT: int =     int(ProjectConfigClass.Get_DB_PORT())
 
     # read only db configs
     READ_ONLY_DB_USER: str | None = ProjectConfigClass.Get_DB_USER()
     READ_ONLY_DB_PASSWORD: str | None = ProjectConfigClass.Get_DB_PASSWORD()
-    READ_ONLY_DB_NAME: str | None = ProjectConfigClass.Get_DB_NAME()
+    READ_ONLY_DB_NAME: str | None = None # IT WILL CHANGE BASED ON YOU BACKEND APP
     READ_ONLY_DB_HOST: str | None = ProjectConfigClass.Get_DB_HOST()
     READ_ONLY_DB_PORT: int | None = int(ProjectConfigClass.Get_DB_PORT())
   

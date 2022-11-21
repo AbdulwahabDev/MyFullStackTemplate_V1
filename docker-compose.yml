@@ -4,14 +4,10 @@ version: "3.9"
 x-common-envs:
   &common-envs
   
-  POSTGRES_DB: 'devopsproject001'  # CHOSE YOU DB NAME :) .             ***  lower case  **
-  POSTGRES_USER: 'postgres'       # DONT CHANGE  HERE  THIS IS DEFAULT #  RUN pgsql service BY BASH AND CHANGE DEFAULT INFO
-  POSTGRES_PASSWORD: 'postgres'   # DONT CHANGE  HERE  THIS IS DEFAULT #  RUN pgsql service BY BASH AND CHANGE DEFAULT INFO
-
-  HASH_ALGORITHM : 'HS256'
-  ACCESS_TOKEN_EXPIRE_IN_SECONDS : '1800'  
-  AUTH_SALT : 'aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5'
-  AUTH_JWT_KEY : 'C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN'
+  POSTGRES_USER: 'postgres'       
+  POSTGRES_PASSWORD: 'postgres'     
+  DB_HOST : 'pgsql' 
+  DB_PORT: '5432'
 
   AUTH_APP_URL : 'http://app_backend:3003'
   
@@ -28,9 +24,9 @@ services:
     networks:
           - myAppNetwork
 
-  app_backend:   
+  auth_app_backend:   
       build:
-        context: backend/
+        context: backend/auth_app/
         dockerfile: Dockerfile
         args:
           RELEASE_SHA: 'unknown'
@@ -38,10 +34,11 @@ services:
           - '3003:3003'
       environment:
           <<: *common-envs
-          DB_HOST : 'pgsql' 
-          DB_PORT: '5432'
-          APP_NAME: 'auth_app'
-          RELEASE_SHA : 'unknown'           
+          HASH_ALGORITHM : 'HS256'
+          ACCESS_TOKEN_EXPIRE_IN_SECONDS : '1800'  
+          AUTH_SALT : 'aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5'
+          AUTH_JWT_KEY : 'C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN'         
+
       networks:
           - myAppNetwork
       depends_on:
@@ -55,16 +52,13 @@ services:
           - '5432:5432'
         
         environment:
-            <<: *common-envs 
+            POSTGRES_USER: 'postgres'
+            POSTGRES_PASSWORD: 'postgres'
             
         volumes:
             - 'my_db_vol:/var/lib/postgresql/data'
         networks:
             - myAppNetwork
-        healthcheck:
-              test: ["CMD", "pg_isready", "-q", "-d", "devopsproject001", "-U", "postgres"]
-              retries: 3
-              timeout: 5s
   
   adminer:
     image: adminer

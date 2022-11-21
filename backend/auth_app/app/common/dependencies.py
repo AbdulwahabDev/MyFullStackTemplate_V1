@@ -1,8 +1,8 @@
 from typing import Optional, Union
 
 
-from auth_app.common.db import db
-from auth_app.config import config
+from app.common.db import db
+from app.config import config
 
 from commons.dependencies import get_db_session_dependency
 from fastapi import Depends, HTTPException, status, Cookie , Request

@@ -5,14 +5,14 @@ from fastapi import HTTPException, status
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from auth_app.config import config
+from app.config import config
 
 from ..helpers import hash_password
 from ..models import Users
 from ..schemas import UsersLoginRequest
 
 
-from auth_app.api.USERS_Entities.user_login_audit.services.add_new_audit import logIn_audit_
+from app.api.USERS_Entities.user_login_audit.services.add_new_audit import logIn_audit_
 
 
 def login_(
