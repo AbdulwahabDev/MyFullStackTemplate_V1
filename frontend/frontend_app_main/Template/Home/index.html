@@ -1,0 +1,96 @@
+{% extends "/Shared/Master.html" %}
+
+
+
+{% block PageVendor_Stylesheets %}
+
+{% endblock PageVendor_Stylesheets %}
+
+<!-- Toolbar:begin  -->
+{% block ToolbarTitle %} 
+ <!-- Toolbar 1 -->
+{% endblock ToolbarTitle %} 
+ 
+{% block ToolbarBreadcrumb %}  
+    <!-- begin::Item-->
+    <li class="breadcrumb-item text-muted">
+        <a href="/" class="text-muted text-hover-primary"> الرئيسية</a>
+    </li>
+    <!--end::Item -->
+
+    <!--begin::Item--> 
+    <!-- <li class="breadcrumb-item">   <span class="bullet bg-gray-300 w-5px h-2px"></span> </li> -->
+    <!--end::Item-->
+
+    <!--begin::Item-->
+    <!-- <li class="breadcrumb-item text-muted">Toolbars</li> -->
+    <!--end::Item-->
+
+    <!--begin::Item--> 
+    <!-- <li class="breadcrumb-item">   <span class="bullet bg-gray-300 w-5px h-2px"></span> </li> -->
+    <!--end::Item-->
+
+    <!--begin::Item-->
+    <!-- <li class="breadcrumb-item text-dark">Toolbar 1</li> -->
+    <!--end::Item -->
+{% endblock ToolbarBreadcrumb %} 
+ 
+{% block ToolbarButton %} 
+ <!-- <a href="#" class=" btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#kt_modal_create_app">Create</a> -->
+{% endblock ToolbarButton %}
+<!-- Toolbar:end  -->
+
+<!-- RenderBody:start  -->
+{% block RenderBody %}  
+
+	<div class="row card g-5 g-xl-8" dir="rtl">
+		<div class="col-12 card-body text-center "> 
+		 <h1> test div 1 </h1>
+		</div> 
+	</div>
+ 
+  
+
+	<div class="separator separator-dotted separator-content border-dark my-15 ">
+		<span class="h1 w-550px fw-bolder">    word between line   </span>
+	</div>
+ 
+
+	<div class="row g-5 g-xl-8 card" dir="rtl">
+		<div class="col-12 text-center card-body"> 
+		 <h1> test div 1 </h1>
+		</div> 
+	</div>
+ 
+
+
+
+{% endblock RenderBody %}
+<!-- RenderBody:end  -->
+
+
+
+
+
+<!--begin::Page Vendors Javascript(used by this page)-->
+{% block Javascript_PageVendors %}
+
+{% endblock Javascript_PageVendors %} 
+<!--end::Page Vendors Javascript-->
+<!--begin::Page Custom Javascript(used by this page)-->
+{% block Javascript_PageCustome %}
+			
+
+			<!-- Resources -->
+			<script src="/dist/assets/plugins/amchart/lib/5/index.js"></script>
+			<script src="/dist/assets/plugins/amchart/lib/5/percent.js"></script>
+			<script src="/dist/assets/plugins/amchart/lib/5/Animated.js"></script> 
+			
+			<script src="/dist/assets/plugins/Date_Range_Picker/Pages/Date_Range_Picker_index.js"> </script>
+			<script src="/dist/assets/js/Pages/Index/call_uploade_app_index.js"> </script>
+			<!-- Chart code -->
+
+			
+
+{% endblock Javascript_PageCustome %}
+<!--end::Page Custom Javascript-->

@@ -1,2 +1,4 @@
 *.pyc
 .env/*
+.env
+.env copy

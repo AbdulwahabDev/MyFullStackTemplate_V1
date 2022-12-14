@@ -37,23 +37,23 @@ services:
                         ./start-reload.sh
                       "
 
-  upload_media_app:   
-      build:
-        context: backend/upload_media_app/
-        dockerfile: Dockerfile
-        args:
-          RELEASE_SHA: 'unknown'
-      ports:
-          - '3102:3102'
-      networks:
-          - myAppNetwork
-      command: >
-                sh -c " 
-                        echo    && 
-                        echo  running upload_media_app ....  &&
-                        echo   &&
-                        ./start-reload.sh
-                      "
+  # upload_media_app:   
+  #     build:
+  #       context: backend/upload_media_app/
+  #       dockerfile: Dockerfile
+  #       args:
+  #         RELEASE_SHA: 'unknown'
+  #     ports:
+  #         - '3102:3102'
+  #     networks:
+  #         - myAppNetwork
+  #     command: >
+  #               sh -c " 
+  #                       echo    && 
+  #                       echo  running upload_media_app ....  &&
+  #                       echo   &&
+  #                       ./start-reload.sh
+  #                     "
    
   pgsql:
   
@@ -77,7 +77,7 @@ services:
     networks :
      - myAppNetwork
     ports:
-      - 8080:8080
+      - 8081:8080
    
 networks:
     myAppNetwork:
