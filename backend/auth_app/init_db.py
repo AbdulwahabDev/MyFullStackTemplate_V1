@@ -1,8 +1,7 @@
 import psycopg2 
 import time
 import sys , os 
-sys.path.append(os.path.abspath('../'))   
-from ProjectConfig import ProjectConfigClass 
+
 from app.config import config
  
 
@@ -15,10 +14,10 @@ while True:
         print("========== start psycopg2.connect  ....  ")
         conn = psycopg2.connect(
         dbname='',
-        user=ProjectConfigClass.Get_DB_USER(),
-        password=ProjectConfigClass.Get_DB_PASSWORD(),
-        host=ProjectConfigClass.Get_DB_HOST(),
-        port=ProjectConfigClass.Get_DB_PORT()
+        user=os.environ.get('POSTGRES_USER'),
+        password=os.environ.get('POSTGRES_PASSWORD'),
+        host=os.environ.get('DB_HOST'),
+        port=os.environ.get('DB_PORT') 
         )
         print("========== psycopg2.connect pass :) ")
         break

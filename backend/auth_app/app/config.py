@@ -1,7 +1,6 @@
 
 import sys , os
-sys.path.append(os.path.abspath('../'))   
-from ProjectConfig import ProjectConfigClass
+
 
 from commons.config import (
     CommonBaseConfig,
@@ -16,13 +15,13 @@ POSTGRES_CONNECTION = "postgresql://{user}:{password}@{host}:{port}/{database}"
 class BaseConfig(CommonBaseConfig):
     APP_NAME: str = "auth_app"
     RELEASE_SHA: str = "0.0.1"
-    DB_NAME: str = "template_auth_app_db"                  # MUST BE LOWER CASE 
-    READ_ONLY_DB_NAME: str = "template_auth_app_db"        # MUST BE LOWER CASE 
+    DB_NAME: str = "MyFullStackTemplate_V1_auth_app_db"
+    READ_ONLY_DB_NAME: str = "MyFullStackTemplate_V1_auth_app_db"
     
-    AUTH_SALT: str = ProjectConfigClass.Get_AUTH_SALT()
-    AUTH_JWT_KEY: str = ProjectConfigClass.Get_AUTH_JWT_KEY()
-    Get_HASH_ALGORITHM: str = ProjectConfigClass.Get_HASH_ALGORITHM()
-    AUTH_TOKEN_EXPIRE_IN: int = int(ProjectConfigClass.Get_ACCESS_TOKEN_EXPIRE_IN_SECONDS())
+    AUTH_SALT: str = os.environ.get('AUTH_SALT') 
+    AUTH_JWT_KEY: str = os.environ.get('AUTH_JWT_KEY')
+    Get_HASH_ALGORITHM: str = os.environ.get('HASH_ALGORITHM') 
+    AUTH_TOKEN_EXPIRE_IN: int = int(os.environ.get('ACCESS_TOKEN_EXPIRE_IN_SECONDS'))
 
 class ProductionConfig(CommonProductionConfig, BaseConfig):  # type: ignore
     pass

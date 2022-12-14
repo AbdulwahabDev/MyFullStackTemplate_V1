@@ -1,65 +1,76 @@
 version: "3.9"
 
-
-x-common-envs:
-  &common-envs
-  
-  POSTGRES_USER: 'postgres'       
-  POSTGRES_PASSWORD: 'postgres'     
-  DB_HOST : 'pgsql' 
-  DB_PORT: '5432'
-
-  AUTH_APP_URL : 'http://app_backend:3003'
   
 services: 
+  frontend_app_main:
 
-  app_frontend:
-    build: frontend/
+    build: frontend/frontend_app_main/
     restart: unless-stopped
-    environment:
-      << : *common-envs
     ports:
         - ':3006:3006'
-    command: ./start-reload.sh 
+    command: >
+              sh -c " 
+                      echo    && 
+                      echo  running frontend_app_main ....  &&
+                      echo   &&
+                      ./start-reload.sh
+                    "
     networks:
           - myAppNetwork
 
-  auth_app_backend:   
+  auth_app:   
+
       build:
         context: backend/auth_app/
         dockerfile: Dockerfile
-        args:
-          RELEASE_SHA: 'unknown'
       ports:
-          - '3003:3003'
-      environment:
-          <<: *common-envs
-          HASH_ALGORITHM : 'HS256'
-          ACCESS_TOKEN_EXPIRE_IN_SECONDS : '1800'  
-          AUTH_SALT : 'aecdbb4e-73e2-430f-8e7e-92ecfds232asa815c5'
-          AUTH_JWT_KEY : 'C9-1Zl!dgRl~Qv+GX?>mas;%Fl~Tasdsanrajsdq0A77s;IxYnupN'         
-
+          - '3101:3101'
       networks:
           - myAppNetwork
       depends_on:
           - pgsql
-      command: ./start-reload.sh
+      command: >
+                sh -c "
+                        echo    && 
+                        echo running auth_app ....  &&
+                        echo    && 
+                        ./start-reload.sh
+                      "
+
+  upload_media_app:   
+      build:
+        context: backend/upload_media_app/
+        dockerfile: Dockerfile
+        args:
+          RELEASE_SHA: 'unknown'
+      ports:
+          - '3102:3102'
+      networks:
+          - myAppNetwork
+      command: >
+                sh -c " 
+                        echo    && 
+                        echo  running upload_media_app ....  &&
+                        echo   &&
+                        ./start-reload.sh
+                      "
    
   pgsql:
-        image: 'postgres:15'
-        
-        ports: 
-          - '5432:5432'
-        
-        environment:
-            POSTGRES_USER: 'postgres'
-            POSTGRES_PASSWORD: 'postgres'
-            
-        volumes:
-            - 'my_db_vol:/var/lib/postgresql/data'
-        networks:
-            - myAppNetwork
   
+    image: 'postgres:15'
+    
+    ports: 
+        - '5432:5432'
+    
+    environment:
+        POSTGRES_USER: 'postgres'
+        POSTGRES_PASSWORD: 'postgres'
+        
+    volumes:
+        - 'my_db_vol:/var/lib/postgresql/data'
+    networks:
+        - myAppNetwork
+
   adminer:
     image: adminer
     restart: always
@@ -67,12 +78,11 @@ services:
      - myAppNetwork
     ports:
       - 8080:8080
-    depends_on:
-     - pgsql
-
+   
 networks:
     myAppNetwork:
         driver: bridge
+
 volumes:
     my_db_vol:
         driver: local

@@ -8,8 +8,7 @@ from .enums import LoggingLevel
 
 logger = logging.getLogger(__name__)
 import sys, os
-sys.path.append(os.path.abspath('../'))  
-from ProjectConfig import ProjectConfigClass
+
 
 POSTGRES_CONNECTION = "postgresql://{user}:{password}@{host}:{port}/{database}"
 
@@ -46,18 +45,18 @@ class CommonBaseConfig(BaseSettings):
     docs_url: str = "/docs"
   
     # db configs
-    DB_USER: str =     ProjectConfigClass.Get_DB_USER()
-    DB_PASSWORD: str = ProjectConfigClass.Get_DB_PASSWORD()
+    DB_USER: str =     os.environ.get('POSTGRES_USER')
+    DB_PASSWORD: str = os.environ.get('POSTGRES_PASSWORD')
     DB_NAME: str =     None # IT WILL CHANGE BASED ON YOU BACKEND APP
-    DB_HOST: str =     ProjectConfigClass.Get_DB_HOST()
-    DB_PORT: int =     int(ProjectConfigClass.Get_DB_PORT())
+    DB_HOST: str =     os.environ.get('DB_HOST')
+    DB_PORT: int =     int(os.environ.get('DB_PORT') )
 
     # read only db configs
-    READ_ONLY_DB_USER: str | None = ProjectConfigClass.Get_DB_USER()
-    READ_ONLY_DB_PASSWORD: str | None = ProjectConfigClass.Get_DB_PASSWORD()
+    READ_ONLY_DB_USER: str | None = os.environ.get('POSTGRES_USER')
+    READ_ONLY_DB_PASSWORD: str | None = os.environ.get('POSTGRES_PASSWORD')
     READ_ONLY_DB_NAME: str | None = None # IT WILL CHANGE BASED ON YOU BACKEND APP
-    READ_ONLY_DB_HOST: str | None = ProjectConfigClass.Get_DB_HOST()
-    READ_ONLY_DB_PORT: int | None = int(ProjectConfigClass.Get_DB_PORT())
+    READ_ONLY_DB_HOST: str | None = os.environ.get('DB_HOST')
+    READ_ONLY_DB_PORT: int | None = int(os.environ.get('DB_PORT') )
   
     # logging level ,,
     LOGGING_LEVEL: LoggingLevel = LoggingLevel.INFO

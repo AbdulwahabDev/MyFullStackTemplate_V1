@@ -16,13 +16,11 @@ RUN  pip install --no-cache-dir -r commons/requirements.txt
 
 
 COPY commons commons
-COPY ProjectConfig.py ProjectConfig.py
 COPY init_db.py init_db.py
 COPY start-reload.sh start-reload.sh
 RUN chmod +x ./start-reload.sh 
 # commons end 
- 
-COPY ProjectConfig.py ProjectConfig.py
+
 
 COPY app/init_db.py app/init_db.py 
  
@@ -33,7 +31,4 @@ RUN  pip install --no-cache-dir -r app/requirements.txt
  
 
 COPY app app
-
-
-
-
+COPY .env .env
