@@ -1,4 +1,5 @@
 *.pyc
 .env/*
 .env
-.env copy
+launch.json
+launch copy.json
