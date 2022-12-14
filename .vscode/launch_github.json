@@ -1,0 +1,87 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "backend/auth_app/init_db.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "DB_HOST":"localhost",
+                "POSTGRES_USER":"postgres",
+                "POSTGRES_PASSWORD":"postgres", 
+                "DB_PORT":"5432",
+
+                "AUTH_SALT":"",
+                "AUTH_JWT_KEY":"",
+                "HASH_ALGORITHM":"",
+                "ACCESS_TOKEN_EXPIRE_IN_SECONDS":"",
+            }
+        }
+    ]
+}
+
+// {
+//     // Use IntelliSense to learn about possible attributes.
+//     // Hover to view descriptions of existing attributes.
+//     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Python: FastAPI",
+//             "type": "python",
+//             "request": "launch",
+//             "module": "uvicorn",
+//             "args": [
+//                 "backend.auth_app.main:app","--port","3101","--reload"
+//             ],
+//             "env": {
+//                 "APP_NAME":"auth_app",
+//                 "RELEASE_SHA":"0.0.1",
+                
+//                 "AUTH_SALT":"",
+//                 "AUTH_JWT_KEY":"",
+//                 "HASH_ALGORITHM":"",
+//                 "ACCESS_TOKEN_EXPIRE_IN_SECONDS":"",
+
+//                 "DB_HOST":"",
+//                 "POSTGRES_USER":"",
+//                 "POSTGRES_PASSWORD":"",
+//                 "DB_PORT":"",
+//             },
+//             "jinja": true,
+//             "justMyCode": true
+//         }
+//     ]
+// }
+
+
+// {
+//     // Use IntelliSense to learn about possible attributes.
+//     // Hover to view descriptions of existing attributes.
+//     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+//     "version": "0.2.0",
+//     "configurations": [
+//         {
+//             "name": "Python: FastAPI",
+//             "type": "python",
+//             "request": "launch",
+//             "module": "uvicorn",
+//             "args": [
+//                 "frontend.frontend_app.main:app","--port","3006","--reload"
+//             ],
+//             "env": {
+//                 "APP_NAME":"frontend_app",
+//                 "RELEASE_SHA":"0.0.1",  
+//                 "AUTH_APP_URL" : "http://127.0.0.1:3101"
+//             },
+//             "jinja": true,
+//             "justMyCode": true
+//         }
+//     ]
+// }
