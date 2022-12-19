@@ -5,6 +5,6 @@ fastapi
 requests 
 SQLAlchemy
 SQLAlchemy-Utils
-psycopg2 # we should update to psycopg3 with SQLAlchemy 2.0
+psycopg2-binary # we should update to psycopg3 with SQLAlchemy 2.0
 alembic 
 python-jose 

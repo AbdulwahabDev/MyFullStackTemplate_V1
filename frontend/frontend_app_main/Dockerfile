@@ -19,7 +19,7 @@ COPY commons commons
 
 
 
-COPY dockerfiles/requirements.txt $APP_NAME/requirements.txt
+COPY app/requirements.txt $APP_NAME/requirements.txt
 RUN  pip install --no-cache-dir -r $APP_NAME/requirements.txt
 
 COPY . .
