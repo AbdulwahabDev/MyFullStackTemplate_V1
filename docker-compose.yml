@@ -71,13 +71,13 @@ services:
     networks:
         - myAppNetwork
 
-  adminer:
-    image: adminer
-    restart: always
-    networks :
-     - myAppNetwork
-    ports:
-      - 8081:8080
+#   adminer:
+#     image: adminer
+#     restart: always
+#     networks :
+#      - myAppNetwork
+#     ports:
+#       - 8081:8080
    
 networks:
     myAppNetwork:
