@@ -3,3 +3,8 @@
 .env
 launch.jsonc
 .DS_Store
+
+frontend/angular_frontend_app/.angular/
+frontend/angular_frontend_app/dist/
+frontend/angular_frontend_app/node_modules/
+frontend/angular_frontend_app/src/assets/images/

@@ -17,6 +17,21 @@ services:
                     "
     networks:
           - myAppNetwork
+  angular_frontend_app:
+
+    build: frontend/angular_frontend_app/
+    restart: unless-stopped
+    ports:
+        - '3007:4200'
+    command: >
+              sh -c " 
+                      echo    && 
+                      echo  running angular_frontend_app ....  &&
+                      echo   &&
+                      ./start-reload.sh
+                    "
+    networks:
+          - myAppNetwork
 
   auth_app:   
 
@@ -37,24 +52,6 @@ services:
                         ./start-reload.sh
                       "
 
-  # upload_media_app:   
-  #     build:
-  #       context: backend/upload_media_app/
-  #       dockerfile: Dockerfile
-  #       args:
-  #         RELEASE_SHA: 'unknown'
-  #     ports:
-  #         - '3102:3102'
-  #     networks:
-  #         - myAppNetwork
-  #     command: >
-  #               sh -c " 
-  #                       echo    && 
-  #                       echo  running upload_media_app ....  &&
-  #                       echo   &&
-  #                       ./start-reload.sh
-  #                     "
-   
   pgsql:
   
     image: 'postgres:15'
@@ -71,13 +68,6 @@ services:
     networks:
         - myAppNetwork
 
-#   adminer:
-#     image: adminer
-#     restart: always
-#     networks :
-#      - myAppNetwork
-#     ports:
-#       - 8081:8080
    
 networks:
     myAppNetwork:
