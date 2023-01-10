@@ -3,3 +3,7 @@
 .env
 launch.jsonc
 .DS_Store
+
+frontend/angular_fuse/.angular/
+frontend/angular_fuse/node_modules/
+frontend/.DS_Store
