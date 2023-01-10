@@ -28,11 +28,13 @@ export class AuthService
      */
     set accessToken(token: string)
     {
+        debugger
         localStorage.setItem('accessToken', token);
     }
 
     get accessToken(): string
     {
+        debugger
         return localStorage.getItem('accessToken') ?? '';
     }
 
@@ -65,6 +67,37 @@ export class AuthService
      *
      * @param credentials
      */
+    // signIn(credentials: { username: string; password: string }): Observable<any>
+    // {
+    //     // Throw error, if the user is already logged in
+    //     if ( this._authenticated )
+    //     {
+    //         return throwError('User is already logged in.');
+    //     }
+
+    //     return this._httpClient.post('http://127.0.0.1:3101/users/login', credentials).pipe(
+    //         catchError(() => 
+    //             // Return false
+    //             of(false)  
+    //         ),
+    //         switchMap((response: any) => {
+    //             debugger
+
+    //             // Store the access token in the local storage
+    //             this.accessToken = response.accessToken;
+
+    //             // Set the authenticated flag to true
+    //             this._authenticated = true;
+
+    //             // Store the user on the user service
+    //             this._userService.user = response.user;
+
+    //             // Return a new observable with the response
+    //             return of(response);
+    //         })
+    //     );
+    // }
+
     signIn(credentials: { email: string; password: string }): Observable<any>
     {
         // Throw error, if the user is already logged in

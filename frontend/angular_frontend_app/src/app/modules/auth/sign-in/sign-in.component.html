@@ -7,27 +7,17 @@
             </div>
 
             <!-- Title -->
-            <div class="mt-8 text-4xl font-extrabold tracking-tight leading-tight">Sign in</div>
-            <div class="flex items-baseline mt-0.5 font-medium">
+            <div class="flex items-baseline mt-0.5 font-medium invisible">
                 <div>Don't have an account?</div>
                 <a
                     class="ml-1 text-primary-500 hover:underline"
                     [routerLink]="['/sign-up']">Sign up
                 </a>
             </div>
-
+          
             <!-- Alert -->
             <fuse-alert
-                class="mt-8"
-                [appearance]="'outline'"
-                [showIcon]="false"
-                [type]="'info'">
-                You are browsing <strong>Fuse Demooooooo</strong>. Click on the "Sign in" button to access the Demo and Documentation.
-            </fuse-alert>
-
-            <!-- Alert -->
-            <fuse-alert
-                class="mt-8"
+                class="mt-8 invisible"
                 *ngIf="showAlert"
                 [appearance]="'outline'"
                 [showIcon]="false"
@@ -42,24 +32,21 @@
                 [formGroup]="signInForm"
                 #signInNgForm="ngForm">
 
-                <!-- Email field -->
+                <!-- username field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Email address</mat-label>
+                    <mat-label>البريد الإلكتروني</mat-label>
                     <input
-                        id="email"
+                        id="username"
                         matInput
-                        [formControlName]="'email'">
-                    <mat-error *ngIf="signInForm.get('email').hasError('required')">
-                        Email address is required
-                    </mat-error>
-                    <mat-error *ngIf="signInForm.get('email').hasError('email')">
-                        Please enter a valid email address
+                        [formControlName]="'username'">
+                    <mat-error *ngIf="signInForm.get('username').hasError('required')">
+                        البريد الإلكتروني مطلوب *
                     </mat-error>
                 </mat-form-field>
 
                 <!-- Password field -->
                 <mat-form-field class="w-full">
-                    <mat-label>Password</mat-label>
+                    <mat-label> كلمة المرور </mat-label>
                     <input
                         id="password"
                         matInput
@@ -81,7 +68,7 @@
                             [svgIcon]="'heroicons_solid:eye-off'"></mat-icon>
                     </button>
                     <mat-error>
-                        Password is required
+                        كلمة المرور مطلوبة
                     </mat-error>
                 </mat-form-field>
 
@@ -177,13 +164,13 @@
         <div class="z-10 relative w-full max-w-2xl">
             <div class="text-7xl font-bold leading-none text-gray-100">
                 <div>Welcome too</div>
-                <div>our community</div>
+                <div >BPO</div>
             </div>
-            <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400">
+            <div class="mt-6 text-lg tracking-tight leading-6 text-gray-400 invisible">
                 Fuse helps developers to build organized and well coded dashboards full of beautiful and rich modules.
                 Join us and start building your application today.
             </div>
-            <div class="flex items-center mt-8">
+            <div class="flex items-center mt-8 invisible">
                 <div class="flex flex-0 items-center -space-x-1.5">
                     <img
                         class="flex-0 w-10 h-10 rounded-full ring-4 ring-offset-1 ring-gray-800 ring-offset-gray-800 object-cover"

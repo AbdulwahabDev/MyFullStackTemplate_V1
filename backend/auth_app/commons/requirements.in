@@ -5,6 +5,7 @@ fastapi
 requests 
 SQLAlchemy
 SQLAlchemy-Utils
-psycopg2-binary # we should update to psycopg3 with SQLAlchemy 2.0
+# psycopg2-binary # if you want to install localy withut docker 
+psycopg2 #if you want to install localy withut docker 
 alembic 
 python-jose 

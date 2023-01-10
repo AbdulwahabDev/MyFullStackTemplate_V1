@@ -1,6 +1,6 @@
 
 import sys , os 
-sys.path.append(os.path.abspath('backend/'))  
+sys.path.append(os.path.abspath('backend/auth_app/'))  
 
 from commons.main import set_up_main
 

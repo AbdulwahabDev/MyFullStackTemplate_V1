@@ -73,9 +73,22 @@
                                     "maximumError": "90kb"
                                 }
                             ],
+                            "fileReplacements": [
+                                {
+                                  "replace": "./src/environments/environment.ts",
+                                  "with": "./src/environments/environment.prod.ts"
+                                }
+                            ],
                             "outputHashing": "all"
                         },
                         "development": {
+
+                            "fileReplacements": [
+                                {
+                                  "replace": "./src/environments/environment.ts",
+                                  "with": "./src/environments/environment.dev.ts"
+                                }
+                            ],
                             "buildOptimizer": false,
                             "optimization": false,
                             "vendorChunk": true,
