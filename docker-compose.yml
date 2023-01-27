@@ -2,21 +2,20 @@ version: "3.9"
 
   
 services: 
-  frontend_app_main:
+  frontend_angular_app:
 
-    build: frontend/frontend_app_main/
+    build: frontend/frontend_angular_app/
     restart: unless-stopped
     ports:
-        - ':3006:3006'
+        - '4201:4201'
+    env_file: frontend/frontend_angular_app/.env
     command: >
-              sh -c " 
-                      echo    && 
-                      echo  running frontend_app_main ....  &&
-                      echo   &&
-                      ./start-reload.sh
+                sh -c " 
+                        echo    &&  
+                        ./start-reload.sh
                     "
     networks:
-          - myAppNetwork
+            - myAppNetwork
 
   auth_app:   
 
@@ -25,6 +24,7 @@ services:
         dockerfile: Dockerfile
       ports:
           - '3101:3101'
+      env_file: backend/auth_app/.env
       networks:
           - myAppNetwork
       depends_on:

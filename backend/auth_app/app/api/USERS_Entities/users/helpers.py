@@ -1,6 +1,6 @@
 import bcrypt
 from app.config import config
-
+from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 from sqlalchemy import select
 
@@ -19,15 +19,25 @@ def hash_password(password: str):
     return password
 
 
-def get_user(username: str, db_session: Session) -> Users:
+def get_user(username: str, db_session: Session,First_Run_System=False) -> Users:
     stmt = select(Users).where(Users.username == username.lower())
     user: Users | None = db_session.execute(stmt).scalar_one_or_none()
-
+    if user == None:
+        if First_Run_System:
+            return None
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="user not found !!",
+        )
     return user
 
 
 def get_user_by_id(id: str, db_session: Session) -> Users:
     stmt = select(Users).where(Users.id == id)
     user: Users | None = db_session.execute(stmt).scalar_one_or_none()
-
-    return user
+    if user == None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="user not found !!",
+        )
+    return user 

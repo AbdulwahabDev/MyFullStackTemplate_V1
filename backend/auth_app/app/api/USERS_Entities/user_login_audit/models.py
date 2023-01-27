@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import sqlalchemy as sa
-from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import Mapped , relationship
 
 from commons.db import Base
 from commons.utils.generate_random_id_uuid import generate_random_uuid
@@ -17,3 +17,6 @@ class User_Login_Audit(Base):
     name: Mapped[str] = sa.Column(sa.String, nullable=False)
     note: Mapped[str] = sa.Column(sa.String, nullable=False)
     created: Mapped[datetime] = sa.Column(sa.DateTime, default=datetime.now, nullable=False)
+
+
+    # owner = relationship("backend.auth_app.app.api.USERS_Entities.users.models.Users", back_populates="loging_log")

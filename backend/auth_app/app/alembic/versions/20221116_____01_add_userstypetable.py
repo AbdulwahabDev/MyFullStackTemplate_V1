@@ -23,7 +23,7 @@ def upgrade():
         sa.Column("id", sa.String, primary_key=True),
         sa.Column("created", sa.DateTime, nullable=False, default=datetime.now),
         sa.Column("updated", sa.DateTime, onupdate=datetime.now),
-        sa.Column("name", sa.String),
+        sa.Column("name", sa.String , unique=True),
     )
 
 

@@ -4,11 +4,11 @@ from pydantic import BaseModel
 
 
 class user_UsersTypeResponse(BaseModel):
-    usertype_id: str
-    user_id: str
-    note: str
-    created: datetime
+    User_id: str
+    User_name: str
+    UserType_name: str 
     updated: datetime
+    note: str
 
     class Config:
         orm_mode = True

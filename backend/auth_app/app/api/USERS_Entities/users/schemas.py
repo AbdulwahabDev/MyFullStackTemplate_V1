@@ -29,6 +29,7 @@ class UsersCreateRequest(BaseModel):
     email: str
     is_active: Optional[bool]
     UserType_id: str
+    photo: str | None
 
 
 
