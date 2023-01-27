@@ -1,0 +1,60 @@
+version: "3.9"
+
+  
+services: 
+  frontend_app_main:
+
+    build: frontend/frontend_app_main/
+    restart: unless-stopped
+    ports:
+        - ':3006:3006'
+    command: >
+              sh -c " 
+                      echo    && 
+                      echo  running frontend_app_main ....  &&
+                      echo   &&
+                      ./start-reload.sh
+                    "
+    networks:
+          - myAppNetwork
+
+  auth_app:   
+
+      build:
+        context: backend/auth_app/
+        dockerfile: Dockerfile
+      ports:
+          - '3101:3101'
+      networks:
+          - myAppNetwork
+      depends_on:
+          - pgsql
+      command: >
+                sh -c "
+                        echo    && 
+                        echo running auth_app ....  &&
+                        echo    && 
+                        ./start-reload.sh
+                      "
+
+  pgsql:
+    build:
+        context: backend/DataBases/docker_db/posgress/
+        dockerfile: Dockerfile
+        args:
+          RELEASE_SHA: 'unknown'
+    env_file: backend/DataBases/docker_db/posgress/.env
+    ports: 
+        - '5444:5432'        
+    volumes:
+        - 'my_db_vol:/var/lib/postgresql/data'
+    networks:
+        - myAppNetwork
+   
+networks:
+    myAppNetwork:
+        driver: bridge
+
+volumes:
+    my_db_vol:
+        driver: local

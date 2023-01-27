@@ -4,7 +4,7 @@
 - docker compose up 
 
 # STEP 2 add first user
-- http://127.0.0.1:3003/USERS_Entities_seeds?UserName=admin&Paswword=admin
+- http://127.0.0.1:3101/USERS_Entities_seeds?UserName=admin&Paswword=admin
 
 
 

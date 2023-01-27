@@ -1,0 +1,19 @@
+*.pyc
+.env/*
+.env
+launch.jsonc
+.DS_Store
+
+frontend/angular_fuse/.angular/
+frontend/angular_fuse/node_modules/
+frontend/frontend_angular_app/.angular/cache/
+frontend/frontend_angular_app/node_modules/
+frontend/frontend_angular_app/dist/
+DeployToAWSsTsteps.txt
+FAST NOTE.txt
+.vscode/launch.json
+
+
+frontend/frontend_app_main/
+frontend/frontend_angular_app/
+backend/auth_app/
