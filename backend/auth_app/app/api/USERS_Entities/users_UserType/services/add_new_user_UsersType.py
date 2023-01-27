@@ -1,8 +1,11 @@
-from fastapi import HTTPException, status
+from commons.exceptions import * 
+
 from sqlalchemy.orm import Session
 
 from ..models import user_UserType
 from ..schemas import user_UsersTypeCreateRequest
+
+from ..services import get_a_user_UsersType_by_id
 
 # users_UserType
 
@@ -10,6 +13,7 @@ from ..schemas import user_UsersTypeCreateRequest
 def add_new_user_UsersType_(
     body: user_UsersTypeCreateRequest,
     db_session: Session,
+    First_Time:bool = False
 ):
     user_UserType_ = user_UserType(
         user_id=body.user_id,
@@ -20,8 +24,16 @@ def add_new_user_UsersType_(
 
     try:
         db_session.flush()
-        return user_UserType_
+        
+        if First_Time: 
+            return user_UserType_
+        else:  
+            user_UserType_with_names = get_a_user_UsersType_by_id.get_a_users_UserType_by_id_(user_id=body.user_id,
+                                                                            userType_id=body.usertype_id,
+                                                                            db_session=db_session)
+            return user_UserType_with_names
+         
     except Exception as ex:
-        # I should make it better later ... such from sqlalchemy.exc import IntegrityError
-        # except IntegrityError:  etc ...
-        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, "HTTP_500_INTERNAL_SERVER_ERROR")
+        Get_Exceptions_details(ex) 
+
+ 

@@ -1,6 +1,7 @@
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
+from commons.exceptions import *
 from ..models import User_Login_Audit
 
 
@@ -17,8 +18,8 @@ def logIn_audit_(
         db_session.flush()
         return "pass"
     except Exception as ex:
-        print("Exception Name : ", ex.__class__.__name__)
-        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, str(ex).splitlines()[0])
+        Get_Exceptions_details(ex)
+
 
 
 def logOut_audit_(
@@ -34,5 +35,4 @@ def logOut_audit_(
         db_session.flush()
         return "pass"
     except Exception as ex:
-        print("Exception Name : ", ex.__class__.__name__)
-        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, str(ex).splitlines()[0])
+        Get_Exceptions_details(ex)

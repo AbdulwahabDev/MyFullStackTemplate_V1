@@ -1,4 +1,4 @@
-from fastapi import HTTPException, status
+from commons.exceptions import *
 from sqlalchemy.orm import Session
 
 from ..models import UserType
@@ -15,7 +15,5 @@ def add_new_user_type_(
     try:
         db_session.flush()
         return userType
-    except Exception:
-        # I should make it better later ... such from sqlalchemy.exc import IntegrityError
-        # except IntegrityError:  etc ...
-        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, "HTTP_500_INTERNAL_SERVER_ERROR")
+    except Exception as ex:
+        Get_Exceptions_details(ex)

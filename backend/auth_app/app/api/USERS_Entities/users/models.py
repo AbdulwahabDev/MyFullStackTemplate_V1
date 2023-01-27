@@ -1,7 +1,7 @@
 from datetime import datetime
 
 import sqlalchemy as sa
-from sqlalchemy.orm import Mapped
+from sqlalchemy.orm import Mapped , relationship
 
 from commons.db import Base
 from commons.utils.generate_random_id_uuid import generate_random_uuid
@@ -21,4 +21,6 @@ class Users(Base):
     is_active: Mapped[bool] = sa.Column(sa.BOOLEAN, nullable=True, default=True)
     is_online: Mapped[bool] = sa.Column(sa.BOOLEAN, nullable=True, default=False)
     password: Mapped[str] = sa.Column(sa.String, nullable=False)
-    photo: Mapped[str] = sa.Column(sa.String, nullable=False, default="assets/media/avatars/blank.png")
+    photo: Mapped[str] = sa.Column(sa.String, nullable=True, default="assets/media/avatars/blank.png")
+
+    # loging_log = relationship("backend.auth_app.app.api.USERS_Entities.user_login_audit.models.User_Login_Audit", back_populates="owner")

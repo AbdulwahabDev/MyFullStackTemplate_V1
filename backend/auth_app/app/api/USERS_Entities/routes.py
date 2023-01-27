@@ -1,5 +1,5 @@
-from fastapi import HTTPException, status
 
+from commons.exceptions import *
 from app.common.dependencies import db_session
 from fastapi import APIRouter
 
@@ -18,7 +18,7 @@ def create_USERS_Entities_seeds(UserName: str, Paswword: str, db_session=db_sess
 
     from app.api.USERS_Entities.users.helpers import get_user
 
-    CheckIFProjectOwnerAddedBefore = get_user(username="admin", db_session=db_session)
+    CheckIFProjectOwnerAddedBefore = get_user(username="admin", db_session=db_session,First_Run_System=True)
 
     if CheckIFProjectOwnerAddedBefore:
         raise HTTPException(status.HTTP_226_IM_USED, "HTTP_226_IM_USED No Need to Do it Again !! ")
@@ -40,8 +40,8 @@ def create_USERS_Entities_seeds(UserName: str, Paswword: str, db_session=db_sess
                 usersCreateRequest = UsersCreateRequest(
                     email="dev.abdulwahab@gmail.com",
                     name="SITE ADMIN",
-                    password="admin",
-                    username="123456",
+                    username="admin",
+                    password="123456",
                     UserType_id=usersType.id
                 )
                 user = add_new_user_(body=usersCreateRequest, db_session=db_session)
@@ -55,7 +55,5 @@ def create_USERS_Entities_seeds(UserName: str, Paswword: str, db_session=db_sess
                 }
 
     except Exception as ex:
-        print(str(ex))
-        # I should make it better later ... such from sqlalchemy.exc import IntegrityError
-        # except IntegrityError:  etc ...
-        raise HTTPException(status.HTTP_500_INTERNAL_SERVER_ERROR, "HTTP_500_INTERNAL_SERVER_ERROR")
+        Get_Exceptions_details(ex)
+        
