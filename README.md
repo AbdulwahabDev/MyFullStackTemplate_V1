@@ -1,4 +1,4 @@
-# devOpsProject_000
+# Tuwaiq_Team_Project
 
 # STEP 1 
 - docker compose up 
