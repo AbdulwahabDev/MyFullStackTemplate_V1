@@ -5,6 +5,7 @@ sys.path.append(os.path.abspath('backend/auth_app/'))
 from commons.main import set_up_main
 
 from .api.routes_check import test_router
+from .api.USERS_Entities.users_status_type.routes import users_status_type_router
 from .api.USERS_Entities.users.routes import users_router
 from .api.USERS_Entities.userType.routes import userType_router
 from .api.USERS_Entities.users_UserType.routes import user_usertype_router
@@ -21,6 +22,7 @@ app = set_up_main(
     routers_modules=[
         test_router,
         # USERS_Entities router start ---- 
+        users_status_type_router,
         users_router,
         userType_router,
         user_usertype_router,

@@ -20,14 +20,13 @@ def add_new_user_(
     
     # Cheack if user type found ... 
     get_a_userType_by_id = get_a_userType_by_id_(userType_id=body.UserType_id,db_session=db_session) 
-    
-    photo = body.photo if body.photo else 'assets/media/avatars/blank.png' 
-    user = Users(
+     
+    user:Users = Users(
         username=body.username.lower(),
         password=hash_password(body.password),
         name=body.name,
         email=body.email.lower(),
-        photo=photo
+        status_id=body.status_id
     )
     db_session.add(user)
 
