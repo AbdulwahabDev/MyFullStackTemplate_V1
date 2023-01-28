@@ -10,9 +10,8 @@ class UsersResponse(BaseModel):
     # password: str
     name: str
     email: str
-    is_active: Optional[bool]
-    # is_online: Optional[bool]
-    photo: str
+    is_active: Optional[bool] 
+    status_id: str
 
     class Config:
         orm_mode = True
@@ -29,7 +28,6 @@ class UsersCreateRequest(BaseModel):
     email: str
     is_active: Optional[bool]
     UserType_id: str
-    photo: str | None
 
 
 

@@ -44,8 +44,6 @@ def genrate_jwt_for_user(user: Users):
         "username": user.username,
         "name": user.name,
         "email": user.email,
-        "photo": user.photo,
-        "user_Department": "user_Department",
         "iat": int(now.timestamp()),
         "exp": int(token_expire_at.timestamp()),
     }

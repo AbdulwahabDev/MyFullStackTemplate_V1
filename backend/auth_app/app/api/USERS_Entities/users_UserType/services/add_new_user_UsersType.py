@@ -15,6 +15,8 @@ def add_new_user_UsersType_(
     db_session: Session,
     First_Time:bool = False
 ):
+
+
     user_UserType_ = user_UserType(
         user_id=body.user_id,
         usertype_id=body.usertype_id,

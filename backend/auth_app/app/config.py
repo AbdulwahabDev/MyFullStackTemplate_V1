@@ -15,8 +15,8 @@ POSTGRES_CONNECTION = "postgresql://{user}:{password}@{host}:{port}/{database}"
 class BaseConfig(CommonBaseConfig):
     APP_NAME: str = "auth_app"
     RELEASE_SHA: str = "0.0.1"
-    DB_NAME: str = "myfullstacktemplate_v1_auth_app_db"
-    READ_ONLY_DB_NAME: str = "myfullstacktemplate_v1_auth_app_db"
+    DB_NAME: str = "tuwaiq_team_project_v1_auth_app_db"
+    READ_ONLY_DB_NAME: str = "tuwaiq_team_project_v1_auth_app_db"
     
     AUTH_SALT: str = os.environ.get('AUTH_SALT') 
     AUTH_JWT_KEY: str = os.environ.get('AUTH_JWT_KEY')
