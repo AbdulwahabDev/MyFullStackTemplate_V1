@@ -5,12 +5,15 @@ sys.path.append(os.path.abspath('backend/auth_app/'))
 from commons.main import set_up_main
 
 from .api.routes_check import test_router
+from .api.USERS_Entities.Media_type.routes import media_type_router 
+
 from .api.USERS_Entities.routes import USERS_Entities_seeds_router 
 from .api.USERS_Entities.users_status_type.routes import users_status_type_router
 from .api.USERS_Entities.users.routes import users_router
 from .api.USERS_Entities.userType.routes import userType_router
 from .api.USERS_Entities.users_UserType.routes import user_usertype_router
 from .api.USERS_Entities.user_Phone.routes import user_phone_router 
+
 
 
 from .api.ROLES_Entitie.Role_Models.routes import role_models_router
@@ -23,6 +26,8 @@ app = set_up_main(
     config,
     routers_modules=[
         test_router,
+        media_type_router,
+        
         # USERS_Entities router start ---- 
         USERS_Entities_seeds_router,
         users_status_type_router,
