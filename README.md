@@ -22,4 +22,7 @@ OR (preferred)
 - username : admin
 - password : 123456
 
+
+POSTMAN URL : https://app.getpostman.com/join-team?invite_code=329930cf4269e5f653dd4e73f426a9f1&target_code=fafd682c1831499199bb7e6be4938437
+
 ##  HAVE FUN :) 
