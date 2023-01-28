@@ -91,7 +91,6 @@ def create_user(db_session):
 
 
     usersType = create_user_types(db_session) # add_new_user_type_
-    New_status = create_all_status(db_session) # create all status
 
     from app.api.USERS_Entities.users.services.add_new_user import add_new_user_
     from app.api.USERS_Entities.users.schemas import UsersCreateRequest
@@ -101,12 +100,11 @@ def create_user(db_session):
         name="SITE ADMIN",
         username="admin",
         password="123456",
-        UserType_id=usersType.id,
-        status_id=New_status.id
+        UserType_id=usersType.id
     )
     user = add_new_user_(body=usersCreateRequest, db_session=db_session)
 
-    return user , usersType.name , New_status.name
+    return user , usersType.name 
         
 
 

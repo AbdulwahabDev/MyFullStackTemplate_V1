@@ -42,7 +42,7 @@ def login(_Response:Response , body: UsersLoginRequest, db_session=db_session):
     return login_response
 
 
-@users_router.post("" , dependencies=[Depends(login_required)])
+@users_router.post("" ,response_model=UsersResponse, dependencies=[Depends(login_required)])
 def create_a_user(body: UsersCreateRequest, db_session=db_session):
     return add_new_user_(body, db_session)
 
